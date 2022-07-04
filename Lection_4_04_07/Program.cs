@@ -93,6 +93,7 @@ namespace Lection_4_04_07
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Add example");
             Console.WriteLine(ReverseOfNumber(-123456));
             Console.WriteLine(ReverseOfNumber(123456));
             Console.WriteLine(ReverseOfNumber(13579));
