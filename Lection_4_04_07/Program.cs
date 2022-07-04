@@ -114,17 +114,6 @@ namespace Lection_4_04_07
             Console.WriteLine(ReverseOfNumber(123456));
             Console.WriteLine(ReverseOfNumber(13579));
             Console.WriteLine(ReverseOfNumber(2468));
-            //Console.WriteLine(Euclid(5, 15));
-            //Console.WriteLine(Euclid(15, 5));
-            //Console.WriteLine(Euclid(32, 56));
-            //Console.WriteLine(Euclid(32, 48));
-            //Console.WriteLine(Euclid(5, 2));
-            //Console.WriteLine(Euclid(21, 5));
-
-            //for (int i = 1; i < 15; i++)
-            //{
-            //    Console.WriteLine($"{i}\t{Fibonacci(i)}");
-            //}
         }
     }
 }
