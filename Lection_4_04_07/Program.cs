@@ -4,23 +4,6 @@ namespace Lection_4_04_07
 {
     class Program
     {
-        static int NumberA(int a)
-        {
-            int res = 1;
-            for (int i = a; i > 0; i--)
-            {
-                if (a % i == 0)
-                {
-                    res = (int)Math.Sqrt(i);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return res;
-        }
-
         static int WithoutARemainder(int a, int b)
         {
             if(b < a)
