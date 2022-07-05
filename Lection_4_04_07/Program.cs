@@ -4,23 +4,6 @@ namespace Lection_4_04_07
 {
     class Program
     {
-        static int NumberA(int a)
-        {
-            int res = 1;
-            for (int i = a; i > 0; i--)
-            {
-                if (a % i == 0)
-                {
-                    res = (int)Math.Sqrt(i);
-                }
-                else
-                {
-                    break;
-                }
-            }
-            return res;
-        }
-
         static int WithoutARemainder(int a, int b)
         {
             if(b < a)
@@ -90,6 +73,7 @@ namespace Lection_4_04_07
 
         static int ReverseOfNumber(int number)
         {
+            OddNumber(number);
             int result = 0;
             while (number != 0)
             {
@@ -110,21 +94,170 @@ namespace Lection_4_04_07
 
         static void Main(string[] args)
         {
-            Console.WriteLine(ReverseOfNumber(-123456));
-            Console.WriteLine(ReverseOfNumber(123456));
-            Console.WriteLine(ReverseOfNumber(13579));
-            Console.WriteLine(ReverseOfNumber(2468));
-            //Console.WriteLine(Euclid(5, 15));
-            //Console.WriteLine(Euclid(15, 5));
-            //Console.WriteLine(Euclid(32, 56));
-            //Console.WriteLine(Euclid(32, 48));
-            //Console.WriteLine(Euclid(5, 2));
-            //Console.WriteLine(Euclid(21, 5));
+            int shift = 3;
+            int size = 10;
+            Random random = new Random();
+            int[] array = new int[size];
+            for (int i = 0; i < size; i++)
+            {
+                array[i] = random.Next(1, 100);
+            }
 
-            //for (int i = 1; i < 15; i++)
-            //{
-            //    Console.WriteLine($"{i}\t{Fibonacci(i)}");
-            //}
+            for (int i = 0; i < size; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+
+            Console.WriteLine();
+
+            int sum = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                sum += array[i];
+            }
+
+            Console.WriteLine((float)sum / array.Length);
+
+        }
+
+        private static void TaskToComplete(int shift, int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                int rightIndex = (shift + i) % array.Length;
+                Console.WriteLine($"{i}=>{rightIndex}");
+                Swap(ref array[i], ref array[rightIndex]);
+                PrintArray(array);
+            }
+        }
+
+        private static void PrintArray(int[] array)
+        {
+            for (int i = 0; i < array.Length; i++)
+            {
+                Console.Write(array[i] + " ");
+            }
+
+            Console.WriteLine();
+        }
+
+        private static void Sort(int[] array)
+        {
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = i + 1; j < array.Length; j++)
+                {
+                    if (array[i] > array[j])
+                    {
+                        Swap(ref array[i], ref array[j]);
+                    }
+                }
+            }
+        }
+
+        private static int[] RemoveAllNegativeNumbers(int[] array)
+        {
+            int newCount = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    newCount++;
+                }
+            }
+
+            int[] newArray = new int[newCount];
+            for (int i = 0, j = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    newArray[j++] = array[i];
+                }
+            }
+
+            return newArray;
+        }
+
+        private static int SumNumbersBetweenMinAndMax(int[] array)
+        {
+            int minI = 0;
+            int maxI = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] < array[minI])
+                {
+                    minI = i;
+                }
+
+                if (array[i] > array[maxI])
+                {
+                    maxI = i;
+                }
+            }
+
+            if (minI > maxI)
+            {
+                Swap(ref minI, ref maxI);
+            }
+
+            int sum = 0;
+            for (int i = minI + 1; i < maxI; i++)
+            {
+                sum += array[i];
+            }
+
+            return sum;
+        }
+
+        private static int GetPositiveNumbersCount(int[] array)
+        {
+            int count = 0;
+            for (int i = 0; i < array.Length; i++)
+            {
+                if (array[i] > 0)
+                {
+                    ++count;
+                }
+            }
+
+            return count;
+        }
+
+        private static int GetMostCommonNumberIndex(int[] array)
+        {
+            int maxCount = 0;
+            int maxCountIndex = 0;
+            for (int j = 0; j < array.Length; j++)
+            {
+                int currentCount = 0;
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (array[i] == array[j])
+                    {
+                        ++currentCount;
+                    }
+                }
+
+                if (currentCount > maxCount)
+                {
+                    maxCount = currentCount;
+                    maxCountIndex = j;
+                }
+            }
+
+            return maxCountIndex;
+        }
+
+        private static void MoveZerosToBeginning(int[] array)
+        {
+            int position = 0;
+            for (int i = 1; i < array.Length; i++)
+            {
+                if (array[i] == 0)
+                {
+                    Swap(ref array[i], ref array[position++]);
+                }
+            }
         }
     }
 }
